@@ -1,0 +1,81 @@
+@prefix : <http://w3id.org/pharmaccess/momcare> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> . 
+
+
+:person_e a foaf:Person . #TODO: Do we want to define a contact point for eLwazi?
+:person_m a foaf:Person .#TODO: Do we want to define a contact point for momcare?
+
+:person_e foaf:memberOf :organization_e .
+:person_m foaf:memberOf :organization_m .
+
+:catalogue a dcat:Catalog;
+  rdf:label "eLwazi Metadata Catalogue";
+  dcat:accessURL <https://catalog.elwazi.org/#/datasets>;
+  dcterms:title "eLwazi Metadata Catalogue";
+  dcterms:description "The eLwazi Catalogue serves as the primary point of reference for all datasets within the DS-I Africa consortium. The interface provides users with a broad overview of the datasets included in the DS-I Africa consortium. These include datasets from research hubs and research projects. This broad overview consists of specific metadata fields at the project and dataset levels. Dataset-level metadata fields differ based on the dataset types within the consortium. In addition, the eLwazi Catalogue also provides the same level of information for external projects (not within the DS-I Africa consortium) which use eLwazi as a Cloud solution and have completed an eLwazi Use Agreement.";
+  dcat:contactPoint [
+  	a foaf:Agent;
+      foaf:name "Lyndon Zass / Nicola Mulder";
+  ];
+  dcat:publisher :organization_e.
+
+:organization_e a foaf:Organization;
+  rdf:label "eLwazi";
+  dcterms:title "eLwazi";
+  dcterms:description "eLwazi Open Data Science Platform is supported by the Office Of The Director, National Institutes Of Health (OD), National Institution of Biomedical Imaging and Bioengineering, and NIH award number 1 U2C EB 032224 - 01." ;
+  foaf:homepage <https://elwazi.org/>. 
+
+
+:project a foaf:Project;
+  dcterms:title "MomCare";
+  dcterms:description "MomCare is a PharmAccess program designed to support expectant mothers on their pregnancy journey with a digitally enabled care bundle that covers antenatal care, delivery, and postnatal care. MomCare demonstrates how mobile technology, a patient-centered approach and value-based payments lead to improved adherence and better risk mitigation in maternal care. The model is ready for adoption and ensures that all (financial and clinical) systems and stakeholders align around improving outcomes that matter to women";
+  foaf:homepage <https://viewer.foleon.com/preview/9kox7c6w92/>;
+  dcat:keyword "Care", "Digital", "LMIC", "MNCH", "maternal", "neonatal", "child", "VBHC", "Kenya", "Tanzania", "pregnancy";
+  foaf:homepage <https://w3id.org/pharmaccess/>. 
+
+:organization_m a foaf:Organization;
+  rdf:label "PharmAccess";
+  dcterms:title "PharmAccess";
+  dcterms:description "PharmAccess is an international non-profit organization with a digital agenda dedicated to connecting more people in sub-Saharan Africa to better healthcare." .
+
+:dataset a dcat:Dataset;
+  dcterms:title "MomCare Program (2017-2023)";
+  dcterms:description "This dataset includes billing and survey data of approximately 30,000 women who enrolled in the PharmAccess MomCare program across urban and rural areas of Kenya since the start of 2017 until the end of 2023.";
+  dcterms:issued "2024-01-01T00:00:00.000000000Z"^^xsd:dateTime;
+  dcterms:modified "2025-04-10T00:00:00.000000000Z"^^xsd:dateTime;
+  dcterms:publisher :organization_m;
+  dcat:theme <http://purl.obolibrary.org/obo/NCIT_C142508>, <http://www.ebi.ac.uk/efo/EFO_0002950>; #TODO: provide more themes, the more the merier.
+  dcterms:keyword "Demographics", "Health"; #TODO: provide more keywords, the more the merier.
+  schema:Country <https://www.geonames.org/192950/republic-of-kenya.html>; #TODO: check if only Kenya or Tanzania only
+  dcterms:spatial <https://www.geonames.org/192950/republic-of-kenya.html>; #TODO: check if only Kenya or Tanzania only
+  dcterms:type <http://purl.org/dc/dcmitype/Dataset>;
+  dcterms:conformsTo <URL>; #TODO: insert URL of FHIR profile
+  dcterms:rights [
+    a dcterms:RightsStatement ;
+    rdf:label "Access governed by Data Access Committee" ;
+    foaf:homepage <URL_access_committee> ;
+  ].
+
+:dataset dcterms:relation :project .
+:catalogue dcat:dataset :dataset .
+:dataset dcat:catalog :catalogue .
+
+:distribution a dcat:distribution;
+  dcterms:title "MomCare Patient Data (2017-2023)";
+  dcterms:description "This dataset includes billing and survey data of approximately 30,000 women who enrolled in the PharmAccess MomCare program across urban and rural areas of Kenya since the start of 2017 until the end of 2023.";
+  dcterms:hasVersion "1.0";
+  # dcat:accessURL <?> ; #TODO: include link to request access
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/rdf+xml> .
+  dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/>;
+  dcterms:accessRights <http://purl.obolibrary.org/obo/DUO_0000026>. 
+
+:dataset dcat:distribution :distribution .
+
+:metadataeLwazi a dcat:CatalogRecord ;
+    dct:title "This metadata in eLwazi Catalog" ;
+    foaf:isPrimaryTopicOf <elwazi_URL> .
