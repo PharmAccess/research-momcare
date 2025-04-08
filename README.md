@@ -7,12 +7,11 @@ Welcome to the GitHub repository for the **MomCare Data**. This dataset follows 
 **Description**:  
 This dataset includes billing and survey data of approximately 30,000 women who enrolled in the PharmAccess MomCare program across urban and rural areas of Kenya since the start of 2017 until the end of 2023.
 
-    **Domain**: Health  
-    **Geographic Scope**: Kenya: Nairobi, Kisumu, and Kakamega county 
-    **Time Period**: 2017 - 2023
-    **Data Type**: Claims and survey data 
-    **Data Model**: Based on [FHIR International Patient Summary](http://hl7.org/fhir/uv/ips/ImplementationGuide/hl7.fhir.uv.ips) 
-
+ **Domain**: Health  
+ **Geographic Scope**: Kenya: Nairobi, Kisumu, and Kakamega county 
+ **Time Period**: 2017 - 2023
+ **Data Type**: Claims and survey data 
+ **Data Model**: Based on [FHIR International Patient Summary](http://hl7.org/fhir/uv/ips/ImplementationGuide/hl7.fhir.uv.ips) 
 
 ## Repository Structure
 
@@ -21,7 +20,7 @@ In our use-case, the MomCare (meta)data will be registered on the [eLwazi Metada
 
 We propose a standardized metadata model, as an extension of FHIR-based datasets, to specify a minimal set of metadata requirements. 
 The model extends the DCAT framework by incorporating dataset descriptors relevant to eLwazi users, such as Sample Size and Countries, while integrating version, format, and storage details more explicitly than DCAT:
-!()[./FAIRwithFHIR_MomCare_metadata.png]
+![momcare metadata model visualized](./FAIRwithFHIR_MomCare_metadata.png)
 
 To enhance machine-actionability, we also generated an RDF-version of this metadata model. This metadata can be found [here](./metadata.ttl). 
 
