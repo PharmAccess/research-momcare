@@ -1,0 +1,3 @@
+[submodule "MomCARE-SQL-to-RDF"]
+	path = MomCARE-SQL-to-RDF
+	url = https://github.com/hbcesar/MomCARE-SQL-to-RDF.git
