@@ -5,13 +5,17 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix schema: <https://schema.org/> . 
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
 
 
-:person_e a foaf:Person . #TODO: Do we want to define a contact point for eLwazi?
-:person_m a foaf:Person .#TODO: Do we want to define a contact point for momcare?
 
-:person_e foaf:memberOf :organization_e .
-:person_m foaf:memberOf :organization_m .
+:person a vcard:Individual ;
+    vcard:family-name "Hedema";
+    vcard:given-name "Femke";
+    vcard:hasEmail <f.heddema@pharmaccess.org> ;
+    vcard:hasTelephone <tel:+123456789> .
+
+:person foaf:memberOf :organization_m .
 
 :catalogue a dcat:Catalog;
   rdf:label "eLwazi Metadata Catalogue";
@@ -70,12 +74,12 @@
   dcterms:description "This dataset includes billing and survey data of approximately 30,000 women who enrolled in the PharmAccess MomCare program across urban and rural areas of Kenya since the start of 2017 until the end of 2023.";
   dcterms:hasVersion "1.0";
   # dcat:accessURL <?> ; #TODO: include link to request access
-  dcat:mediaType <https://www.iana.org/assignments/media-types/application/rdf+xml> .
+  dcat:mediaType <https://www.iana.org/assignments/media-types/application/rdf+xml> ;
   dcterms:license <https://creativecommons.org/licenses/by-sa/4.0/>;
   dcterms:accessRights <http://purl.obolibrary.org/obo/DUO_0000026>. 
 
 :dataset dcat:distribution :distribution .
 
 :metadataeLwazi a dcat:CatalogRecord ;
-    dct:title "This metadata in eLwazi Catalog" ;
+    dcterms:title "This metadata in eLwazi Catalog" ;
     foaf:isPrimaryTopicOf <elwazi_URL> .
