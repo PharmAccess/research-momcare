@@ -1,0 +1,3 @@
+[submodule "momcare_sql_to_rdf"]
+	path = momcare_sql_to_rdf
+	url = https://github.com/PharmAccess/momcare_sql_to_rdf
